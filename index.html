@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kosakata Jepang Urut Nomor</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b1e2b;--mu:#6b7090;--ac:#5b5bf0;--acx:#fff;--bd:#e3e5f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12141c;--card:#1c1f2b;--tx:#eceefa;--mu:#9a9fc0;--ac:#8484ff;--acx:#10121a;--bd:#2d3142}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12141c;--card:#1c1f2b;--tx:#eceefa;--mu:#9a9fc0;--ac:#8484ff;--acx:#10121a;--bd:#2d3142}
+*{box-sizing:border-box}
+html{scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 14px 8px;border-bottom:1px solid var(--bd)}
+.in{max-width:600px;margin:0 auto}
+h1{font-size:19px;margin:0 0 8px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
+.tabs button{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:18px;padding:7px 13px;font-size:13px;font-weight:600}
+.tabs button.on{background:var(--ac);border-color:var(--ac);color:var(--acx)}
+.tools{display:flex;gap:6px}
+.tools button{flex:1;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:9px 4px;font-size:13px;font-weight:600}
+.tools button.on{border-color:var(--ac);color:var(--ac)}
+#q{width:100%;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:9px 10px;font-size:15px;margin-bottom:6px}
+main{max-width:600px;margin:0 auto;padding:6px 14px 70px}
+h2{font-size:13px;margin:18px 2px 8px;display:flex;justify-content:space-between;color:var(--mu)}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.r{display:grid;grid-template-columns:34px 1.1fr 1fr;gap:8px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center;cursor:pointer}
+.r:first-child{border-top:0}
+.n{font-size:12px;color:var(--mu);font-weight:600}
+.k{font-size:18px;font-weight:700}
+.k small{display:block;font-size:12px;color:var(--mu);font-weight:500}
+.a{font-size:14px;text-align:right}
+.hid .a,.hidj .k{filter:blur(6px);user-select:none}
+.hid .r.show .a,.hidj .r.show .k{filter:none}
+.empty{color:var(--mu);text-align:center;padding:30px 0}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+<h1>Kosakata Jepang (1-244)</h1>
+<div class="tabs" id="tabs"></div>
+<input id="q" placeholder="Cari kata atau nomor..." autocomplete="off">
+<div class="tools"><button id="shuf">🔀 Acak</button><button id="urut" hidden>Urut</button><button id="hidej">Tutup Jepang</button><button id="hide">Tutup arti</button></div>
+</div></div>
+<main id="out"></main>
+<script>
+const raw=`せかい|sekai|Dunia
+アジア|ajia|Asia
+ヨーロッパ|yōroppa|Eropa
+アフリカ|afurika|Afrika
+にほん|nihon|Jepang
+インドネシア|indoneshia|Indonesia
+ちゅうごく|chūgoku|China
+かんこく|kankoku|Korea Selatan
+マレーシア|marēshia|Malaysia
+タイ|tai|Thailand
+フィリピン|firipin|Filipina
+ベトナム|betonamu|Vietnam
+シンガポール|shingapōru|Singapura
+ブルネイ|burunei|Brunei
+ホンコン|honkon|Hongkong
+インド|indo|India
+サウジアラビア|saujiarabia|Saudi Arabia
+オーストラリア|ōsutoraria|Australia
+イギリス|igirisu|Inggris
+ドイツ|doitsu|Jerman
+フランス|furansu|Prancis
+イタリア|itaria|Italia
+オランダ|oranda|Belanda
+スペイン|supein|Spanyol
+ロシア|roshia|Rusia
+アメリカ|amerika|Amerika
+カナダ|kanada|Kanada
+ほん|hon|Buku
+じしょ|jisho|Kamus
+しんぶん|shinbun|Koran
+ざっし|zasshi|Majalah
+はこ|hako|Kotak
+かばん|kaban|Tas
+かぎ|kagi|Kunci
+えんぴつ|enpitsu|Pensil
+ボールペン|bōrupen|Ballpoint
+ペン|pen|Pena
+ノート|nōto|Buku catatan
+かみ|kami|Kertas
+たばこ|tabako|Rokok
+マッチ|macchi|Korek api
+はいざら|haizara|Asbak
+ライター|raitā|Korek gas/geretan
+つくえ|tsukue|Meja
+いす|isu|Kursi
+まど|mado|Jendela
+でんき|denki|Lampu listrik
+スイッチ|suitchi|Saklar
+ドア|doa|Pintu
+テレビ|terebi|Televisi
+ラジオ|rajio|Radio
+とけい|tokei|Jam
+カメラ|kamera|Kamera
+じどうしゃ|jidōsha|Mobil
+いえ|ie|Rumah
+にわ|niwa|Halaman
+かいしゃ|kaisha|Perusahaan
+じむしょ|jimusho|Kantor
+うけつけ|uketsuke|Bagian penerima tamu
+ロビー|robī|Lobi
+へや|heya|Kamar
+おてあらい|otearai|Toilet
+きょうしつ|kyōshitsu|Ruang kelas
+しょくどう|shokudō|Kantin
+せんもん|senmon|Jurusan/keahlian
+でんき|denki|Listrik
+きかい|kikai|Mesin
+コンピューター|konpyūtā|Komputer
+あさ|asa|Pagi
+ひる|hiru|Siang
+ばん|ban|Malam
+ごぜん|gozen|Waktu sebelum jam 12 siang
+ごご|gogo|Waktu setelah jam 12 siang
+えき|eki|Stasiun
+こうじょう|kōjō|Pabrik
+ぎんこう|ginkō|Bank
+びょういん|byōin|Rumah sakit
+デパート|depāto|Department store
+ほんや|honya|Toko buku
+とこや|tokoya|Tempat pangkas rambut
+たんじょうび|tanjōbi|Hari ulang tahun
+ひこうき|hikōki|Pesawat terbang
+しんかんせん|shinkansen|Kereta super cepat
+でんしゃ|densha|Kereta listrik
+ちかてつ|chikatetsu|Kereta bawah tanah
+タクシー|takushī|Taksi
+バス|basu|Bis
+じてんしゃ|jitensha|Sepeda
+あるいて|aruite|Berjalan
+ふね|fune|Kapal laut
+ひとりで|hitori de|Sendirian
+ともだちと|tomodachi to|(Bersama) teman
+こいびとと|koibito to|(Bersama) pacar
+あさごはん|asagohan|Sarapan/makan pagi
+ひるごはん|hirugohan|Makan siang
+ばんごはん|bangohan|Makan malam
+たべもの|tabemono|Makanan
+ごはん|gohan|Nasi
+パン|pan|Roti
+にく|niku|Daging
+さかな|sakana|Ikan
+たまご|tamago|Telur
+やさい|yasai|Sayuran
+くだもの|kudamono|Buah-buahan
+りんご|ringo|Apel
+みかん|mikan|Jeruk
+バナナ|banana|Pisang
+ぶどう|budō|Anggur
+パイナップル|painappuru|Nanas
+すいか|suika|Semangka
+のみもの|nomimono|Minuman
+コーヒー|kōhī|Kopi
+こうちゃ|kōcha|Teh
+おちゃ|ocha|Teh Jepang
+ぎゅうにゅう|gyūnyū|Susu sapi
+ジュース|jūsu|Jus
+ビール|bīru|Bir
+ウイスキー|uisukī|Wisky
+おさけ|osake|Sake
+みず|mizu|Air
+シャツ|shatsu|Pakaian
+ネクタイ|nekutai|Dasi
+くつ|kutsu|Sepatu
+くすり|kusuri|Obat
+はな|hana|Bunga
+てがみ|tegami|Surat
+きって|kitte|Perangko
+ふうとう|fūtō|Amplop
+エアメール|eamēru|Pos udara
+はがき|hagaki|Kartu pos
+えはがき|ehagaki|Kartu pos bergambar
+きっぷ|kippu|Karcis
+えいが|eiga|Film
+こうぎ|kōgi|Kuliah
+はし|hashi|Sumpit
+スプーン|supūn|Sendok
+フォーク|fōku|Garpu
+ナイフ|naifu|Pisau
+ドライバー|doraibā|Obeng
+スパナ|supana|Kunci pas
+ペンチ|penchi|Tang
+はさみ|hasami|Gunting
+ナイフ|naifu|Pisau
+かぞく|kazoku|Keluarga
+きょうだい|kyōdai|Saudara
+おとうさん|otōsan|Bapak (orang lain)
+おかあさん|okāsan|Ibu (orang lain)
+おにいさん|oniisan|Kakak laki-laki (orang lain)
+おねえさん|onēsan|Kakak perempuan (orang lain)
+おとうとさん|otōtosan|Adik laki-laki (orang lain)
+いもうとさん|imōtosan|Adik perempuan (orang lain)
+にもつ|nimotsu|Barang
+カタログ|katarogu|Katalog
+レポート|repōto|Laporan
+おかね|okane|Uang
+やま|yama|Gunung
+かわ|kawa|Sungai
+まち|machi|Kota
+うみ|umi|Laut
+ぶたにく|butaniku|Daging babi
+とりにく|toriniku|Daging ayam
+ぎゅうにく|gyūniku|Daging sapi
+りょうり|ryōri|Masakan
+スポーツ|supōtsu|Olahraga
+ピンポン|pinpon|Pingpong/tenis meja
+テニス|tenisu|Tenis
+サッカー|sakkā|Sepak bola
+スキー|sukī|Ski
+やきゅう|yakyū|Bisbol/base ball
+おんがく|ongaku|Musik
+うた|uta|Lagu
+ギター|gitā|Gitar
+ダンス|dansu|Dansa
+かんじ|kanji|Huruf kanji
+ひらがな|hiragana|Huruf hiragana
+かたかな|katakana|Huruf katakana
+ローマじ|rōmaji|Huruf Romawi
+ゆうびんきょく|yūbinkyoku|Kantor pos
+ポスト|posuto|Bis surat
+レストラン|resutoran|Restoran
+がっこう|gakkō|Sekolah
+たいしかん|taishikan|Kantor kedutaan besar
+パスポート|pasupōto|Pasport
+こうえん|kōen|Taman
+ビル|biru|Gedung
+おとこのひと|otoko no hito|Laki-laki
+おんなのひと|onna no hito|Perempuan
+うえ|ue|Atas
+した|shita|Bawah
+まえ|mae|Depan
+うしろ|ushiro|Belakang
+みぎ|migi|Kanan
+ひだり|hidari|Kiri
+なか|naka|Dalam
+そと|soto|Luar
+あいだ|aida|Antara
+てんき|tenki|Cuaca
+はれ|hare|Cerah
+くもり|kumori|Mendung
+あめ|ame|Hujan
+ゆき|yuki|Salju
+りょこう|ryokō|Rekreasi/tamasya
+おみやげ|omiyage|Oleh-oleh
+しごと|shigoto|Pekerjaan
+せんせい|sensei|Guru
+サラリーマン|sararīman|Karyawan
+おまわりさん|omawarisan|Polisi
+おいしゃさん|oishasan|Dokter
+エンジニア|enjinia|Ahli mesin
+ラジカセ|rajikase|Radio kaset
+しお|shio|Garam
+さとう|satō|Gula
+しょうゆ|shōyu|Kecap asin
+せっけん|sekken|Sabun mandi
+タオル|taoru|Handuk
+はみがき|hamigaki|Pasta gigi
+はブラシ|haburashi|Sikat gigi
+シャンプー|shanpū|Shampo
+かさ|kasa|Payung
+ふく|fuku|Pakaian
+きもの|kimono|Pakaian khas Jepang
+かお|kao|Wajah
+かみ|kami|Rambut
+め|me|Mata
+みみ|mimi|Telinga
+はな|hana|Hidung
+くち|kuchi|Mulut
+は|ha|Gigi
+て|te|Tangan
+あし|ashi|Kaki
+でんきせいひん|denkiseihin|Peralatan listrik
+れいぞうこ|reizōko|Lemari es
+すいはんき|suihanki|Rice cooker
+そうじき|sōjiki|Alat penghisap debu
+せんたくき|sentakuki|Mesin cuci
+オーバー|ōbā|Mantel
+コート|kōto|Jas hujan
+セーター|sētā|Sweater
+ぼうし|bōshi|Topi
+てぶくろ|tebukuro|Sarung tangan
+マフラー|mafurā|Syal
+こうさてん|kōsaten|Perempatan
+しんごう|shingō|Lampu merah
+しゅみ|shumi|Hobi`;
+const L=raw.split("\n").map((l,i)=>{const[k,r,a]=l.split("|");return{n:i+1,k,r,a}});
+const B=[...Array(Math.ceil(L.length/25)).keys()].map(i=>[i*25+1,Math.min(i*25+25,L.length)]);
+const T=id=>document.getElementById(id);
+let sel=-1,hide=false,hidJ=false,pos=null;
+T("tabs").innerHTML=`<button data-i="-1">Semua</button>`+B.map((b,i)=>`<button data-i="${i}">${b[0]}-${b[1]}</button>`).join("");
+const row=w=>`<div class="r"><div class="n">${w.n}</div><div class="k">${w.k}<small>${w.r}</small></div><div class="a">${w.a}</div></div>`;
+const box=a=>`<div class="box ${hide?"hid ":""}${hidJ?"hidj":""}">${a.map(row).join("")}</div>`;
+function render(){
+  const q=T("q").value.trim().toLowerCase();
+  [...T("tabs").children].forEach(b=>b.classList.toggle("on",+b.dataset.i===sel));
+  let list=L.filter(w=>(sel<0||(w.n>=B[sel][0]&&w.n<=B[sel][1]))&&(!q||String(w.n)===q||(w.k+w.r+w.a).toLowerCase().includes(q)));
+  let h="";
+  if(pos){list.sort((x,y)=>pos[x.n]-pos[y.n]);if(list.length)h=`<h2>Urutan acak<span>${list.length} kata</span></h2>`+box(list)}
+  else B.forEach((b,i)=>{const part=list.filter(w=>w.n>=b[0]&&w.n<=b[1]);if(part.length)h+=`<h2>Nomor ${b[0]}-${b[1]}<span>${part.length} kata</span></h2>`+box(part)});
+  T("out").innerHTML=h||'<p class="empty">Tidak ada hasil.</p>';
+}
+T("tabs").onclick=e=>{if(e.target.dataset.i!==undefined){sel=+e.target.dataset.i;render();window.scrollTo(0,0)}};
+T("q").oninput=render;
+T("out").onclick=e=>{const r=e.target.closest(".r");if(r)r.classList.toggle("show")};
+T("shuf").onclick=()=>{const o=L.map(w=>w.n).sort(()=>Math.random()-.5);pos={};o.forEach((n,i)=>pos[n]=i);T("shuf").classList.add("on");T("shuf").textContent="🔀 Acak lagi";T("urut").hidden=false;render()};
+T("urut").onclick=()=>{pos=null;T("shuf").classList.remove("on");T("shuf").textContent="🔀 Acak";T("urut").hidden=true;render()};
+T("hidej").onclick=()=>{hidJ=!hidJ;T("hidej").classList.toggle("on",hidJ);T("hidej").textContent=hidJ?"Buka Jepang":"Tutup Jepang";render()};
+T("hide").onclick=()=>{hide=!hide;T("hide").classList.toggle("on",hide);T("hide").textContent=hide?"Buka arti":"Tutup arti";render()};
+render();
+</script>
+</body>
+</html>
