@@ -25,7 +25,7 @@ h1{font-size:19px;margin:0 0 8px}
 main{max-width:600px;margin:0 auto;padding:6px 14px 70px}
 h2{font-size:13px;margin:18px 2px 8px;display:flex;justify-content:space-between;color:var(--mu)}
 .box{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
-.r{display:grid;grid-template-columns:34px 1.1fr 1fr;gap:8px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center;cursor:pointer}
+.r{display:grid;grid-template-columns:34px 1.1fr 1fr 30px;gap:8px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center;cursor:pointer}
 .r:first-child{border-top:0}
 .n{font-size:12px;color:var(--mu);font-weight:600}
 .k{font-size:18px;font-weight:700}
@@ -34,14 +34,17 @@ h2{font-size:13px;margin:18px 2px 8px;display:flex;justify-content:space-between
 .hid .a,.hidj .k{filter:blur(6px);user-select:none}
 .hid .r.show .a,.hidj .r.show .k{filter:none}
 .empty{color:var(--mu);text-align:center;padding:30px 0}
+.s{border:0;background:none;font-size:24px;line-height:1;color:var(--mu);padding:0;cursor:pointer}
+.s.on{color:#f5b301}
 </style>
 </head>
 <body>
 <div class="top"><div class="in">
-<h1>Kosakata Jepang (1-244)</h1>
+<h1>Kosakata Jepang <span id="cnt" style="font-size:13px;color:var(--mu);font-weight:600"></span></h1>
 <div class="tabs" id="tabs"></div>
 <input id="q" placeholder="Cari kata atau nomor..." autocomplete="off">
 <div class="tools"><button id="shuf">🔀 Acak</button><button id="urut" hidden>Urut</button><button id="hidej">Tutup Jepang</button><button id="hide">Tutup arti</button></div>
+<div class="tools" id="fl" style="margin-top:6px"><button data-f="all" class="on">Semua</button><button data-f="yes">★ Belum hafal</button><button data-f="no">Sudah hafal</button></div>
 </div></div>
 <main id="out"></main>
 <script>
@@ -292,14 +295,16 @@ const raw=`せかい|sekai|Dunia
 const L=raw.split("\n").map((l,i)=>{const[k,r,a]=l.split("|");return{n:i+1,k,r,a}});
 const B=[...Array(Math.ceil(L.length/25)).keys()].map(i=>[i*25+1,Math.min(i*25+25,L.length)]);
 const T=id=>document.getElementById(id);
-let sel=-1,hide=false,hidJ=false,pos=null;
+let sel=-1,hide=false,hidJ=false,pos=null,fl="all",done=new Set();
+try{done=new Set(JSON.parse(localStorage.getItem("belum")||"[]"))}catch(e){}
+const cnt=()=>{T("cnt").textContent="★ "+done.size+" belum hafal"};
 T("tabs").innerHTML=`<button data-i="-1">Semua</button>`+B.map((b,i)=>`<button data-i="${i}">${b[0]}-${b[1]}</button>`).join("");
-const row=w=>`<div class="r"><div class="n">${w.n}</div><div class="k">${w.k}<small>${w.r}</small></div><div class="a">${w.a}</div></div>`;
+const row=w=>`<div class="r"><div class="n">${w.n}</div><div class="k">${w.k}<small>${w.r}</small></div><div class="a">${w.a}</div><button class="s${done.has(w.n)?" on":""}" data-n="${w.n}">${done.has(w.n)?"★":"☆"}</button></div>`;
 const box=a=>`<div class="box ${hide?"hid ":""}${hidJ?"hidj":""}">${a.map(row).join("")}</div>`;
 function render(){
-  const q=T("q").value.trim().toLowerCase();
+  const q=T("q").value.trim().toLowerCase();cnt();[...T("fl").children].forEach(b=>b.classList.toggle("on",b.dataset.f===fl));
   [...T("tabs").children].forEach(b=>b.classList.toggle("on",+b.dataset.i===sel));
-  let list=L.filter(w=>(sel<0||(w.n>=B[sel][0]&&w.n<=B[sel][1]))&&(!q||String(w.n)===q||(w.k+w.r+w.a).toLowerCase().includes(q)));
+  let list=L.filter(w=>(sel<0||(w.n>=B[sel][0]&&w.n<=B[sel][1]))&&(!q||String(w.n)===q||(w.k+w.r+w.a).toLowerCase().includes(q))&&(fl==="all"||(fl==="yes")===done.has(w.n)));
   let h="";
   if(pos){list.sort((x,y)=>pos[x.n]-pos[y.n]);if(list.length)h=`<h2>Urutan acak<span>${list.length} kata</span></h2>`+box(list)}
   else B.forEach((b,i)=>{const part=list.filter(w=>w.n>=b[0]&&w.n<=b[1]);if(part.length)h+=`<h2>Nomor ${b[0]}-${b[1]}<span>${part.length} kata</span></h2>`+box(part)});
@@ -307,7 +312,8 @@ function render(){
 }
 T("tabs").onclick=e=>{if(e.target.dataset.i!==undefined){sel=+e.target.dataset.i;render();window.scrollTo(0,0)}};
 T("q").oninput=render;
-T("out").onclick=e=>{const r=e.target.closest(".r");if(r)r.classList.toggle("show")};
+T("out").onclick=e=>{const s=e.target.closest(".s");if(s){const n=+s.dataset.n;done.has(n)?done.delete(n):done.add(n);try{localStorage.setItem("belum",JSON.stringify([...done]))}catch(x){}if(fl==="all"){s.classList.toggle("on",done.has(n));s.textContent=done.has(n)?"★":"☆";cnt()}else render();return}const r=e.target.closest(".r");if(r)r.classList.toggle("show")};
+T("fl").onclick=e=>{if(e.target.dataset.f){fl=e.target.dataset.f;render()}};
 T("shuf").onclick=()=>{const o=L.map(w=>w.n).sort(()=>Math.random()-.5);pos={};o.forEach((n,i)=>pos[n]=i);T("shuf").classList.add("on");T("shuf").textContent="🔀 Acak lagi";T("urut").hidden=false;render()};
 T("urut").onclick=()=>{pos=null;T("shuf").classList.remove("on");T("shuf").textContent="🔀 Acak";T("urut").hidden=true;render()};
 T("hidej").onclick=()=>{hidJ=!hidJ;T("hidej").classList.toggle("on",hidJ);T("hidej").textContent=hidJ?"Buka Jepang":"Tutup Jepang";render()};
