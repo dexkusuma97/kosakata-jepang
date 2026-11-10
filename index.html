@@ -574,7 +574,7 @@ const parse=s=>s.split("\n").map((l,j)=>{const[k,r,a]=l.split("|");return{n:j+1,
 const saved=key=>{try{return new Set(JSON.parse(localStorage.getItem(key)||"[]"))}catch(e){return new Set()}};
 const cnt=()=>{T("cnt").textContent="★ "+done.size+" belum hafal"};
 function menu(){T("menu").innerHTML=SETS.map((s,i)=>`<button class="card" data-i="${i}"><span class="em">${s[2]}</span><span><b>${s[1]}</b><small>${parse(s[3]).length} kata · ★ ${saved(s[0]).size} belum hafal</small></span></button>`).join("")+`<button class="card" data-a="quiz"><span class="em">🎯</span><span><b>Quiz</b><small>Timer 61 detik · +3 benar, −4 salah</small></span></button><button class="card" data-a="eval"><span class="em">📊</span><span><b>Evaluasi</b><small>Kata yang sering salah</small></span></button>`}
-T("menu").onclick=e=>{const c=e.target.closest(".card");if(!c)return;if(c.dataset.a==="quiz")qSetup();else if(c.dataset.a==="eval")qEval();else openSet(+c.dataset.i)};
+T("menu").onclick=e=>{const c=e.target.closest(".card");if(!c)return;if(c.dataset.a==="quiz")go("quiz");else if(c.dataset.a==="eval")go("evaluasi");else go(PG[+c.dataset.i])};
 function openSet(i){
   cur=i;const s=SETS[i];L=parse(s[3]);
   B=[...Array(Math.ceil(L.length/25)).keys()].map(j=>[j*25+1,Math.min(j*25+25,L.length)]);
@@ -582,9 +582,9 @@ function openSet(i){
   T("shuf").classList.remove("on");T("shuf").textContent="🔀 Acak";T("urut").hidden=true;
   T("ttl").textContent=s[1];
   T("tabs").innerHTML=`<button data-i="-1">Semua</button>`+B.map((b,j)=>`<button data-i="${j}">${b[0]}-${b[1]}</button>`).join("");
-  T("home").hidden=true;T("app").hidden=false;window.scrollTo(0,0);render();
+  T("home").hidden=true;T("qz").hidden=true;T("app").hidden=false;window.scrollTo(0,0);render();
 }
-T("back").onclick=()=>{menu();T("app").hidden=true;T("home").hidden=false;window.scrollTo(0,0)};
+T("back").onclick=()=>toMenu();
 const row=w=>`<div class="r"><div class="n">${w.n}</div><div class="k">${w.k}<small>${w.r}</small></div><div class="a">${w.a}</div><button class="s${done.has(w.n)?" on":""}" data-n="${w.n}">${done.has(w.n)?"★":"☆"}</button></div>`;
 const box=a=>`<div class="box ${hide?"hid ":""}${hidJ?"hidj":""}">${a.map(row).join("")}</div>`;
 function render(){
@@ -631,14 +631,15 @@ T("sq").onclick=e=>{const v=e.target.dataset.v;if(v){qc.quiz=v;qc.sel=new Set();
 T("st").onclick=e=>{const v=e.target.dataset.v;if(v){qc.type=v;drawSetup()}};
 T("sc").onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;const nb=Math.ceil(maxN()/25);if(i==="all")qc.sel=qc.sel.size===nb?new Set():new Set([...Array(nb).keys()]);else{const n=+i;qc.sel.has(n)?qc.sel.delete(n):qc.sel.add(n)}drawSetup()};
 T("qgo").onclick=start;T("qagain").onclick=start;
-T("qset2").onclick=qSetup;T("qev").onclick=qEval;T("qev2").onclick=qEval;T("evq").onclick=qSetup;
-T("qquit").onclick=()=>{clearInterval(tm);if(run)run.over=true;qSetup()};
-T("qz").onclick=e=>{if(e.target.closest(".bk"))goHome()};
+T("qset2").onclick=()=>history.back();T("qev").onclick=()=>go("evaluasi");T("qev2").onclick=()=>go("evaluasi");T("evq").onclick=()=>go("quiz");
+T("qquit").onclick=()=>{clearInterval(tm);if(run)run.over=true;history.back()};
+T("qz").onclick=e=>{if(e.target.closest(".bk"))toMenu()};
 function start(){
   const full=QS[qc.quiz].flatMap(i=>ALL[i]);
   const pool=full.filter(w=>[...qc.sel].some(b=>w.n>b*25&&w.n<=b*25+25));
   run={full,pool,order:[],q:null,last:null,right:0,wrong:0,wl:{},busy:false,paused:false,over:false,deadline:Date.now()+61000};
   qShow("qplay");next();clearInterval(tm);tm=setInterval(tick,100);tick();
+  if(location.hash==="#hasil")location.replace("#main");else location.hash="main";
 }
 function tick(){
   if(run.paused||run.over)return;
@@ -680,7 +681,7 @@ function finish(){
   const h=lsGet("quiz_hist",[]);h.unshift({t:Date.now(),q:qc.quiz,y:qc.type,r:run.right,w:run.wrong});lsSet("quiz_hist",h.slice(0,30));
   const wl=Object.keys(run.wl).map(id=>BYID[id]);
   T("qrb").innerHTML=`<div class="big3">⏱ Waktu habis</div><div class="stat"><div><b>${run.right}</b>Benar</div><div><b>${run.wrong}</b>Salah</div><div><b>${acc}%</b>Akurasi</div></div>`+(wl.length?`<h2>Kata yang salah ronde ini</h2><div class="box">${wl.map(w=>`<div class="er"><div><b>${w.k}</b><small>${w.r}</small></div><div class="c">${w.a}</div></div>`).join("")}</div>`:`<p class="hist">Tidak ada jawaban salah. Keren!</p>`);
-  qShow("qres");
+  location.replace("#hasil");
 }
 function qEval(){qShow("qeval");drawEval()}
 function drawEval(){
@@ -697,7 +698,23 @@ function drawEval(){
 T("evt").onclick=e=>{if(e.target.dataset.f){ef=e.target.dataset.f;drawEval()}};
 T("evreset").onclick=e=>{if(!rs){rs=true;e.target.textContent="Ketuk lagi untuk menghapus semua data";setTimeout(()=>{rs=false;e.target.textContent="Hapus data evaluasi"},3000)}else{rs=false;lsSet("quiz_stats",{});lsSet("quiz_hist",[]);e.target.textContent="Hapus data evaluasi";drawEval()}};
 
-menu();
+
+const PG=["kosakata","kata-kerja","kata-sifat"];
+const go=h=>{location.hash=h};
+const toMenu=()=>{location.hash=""};
+function route(){
+  const h=location.hash.slice(1);
+  if(h!=="main"&&run&&!run.over){run.over=true;clearInterval(tm)}
+  const i=PG.indexOf(h);
+  if(i>=0)openSet(i);
+  else if(h==="quiz")qSetup();
+  else if(h==="evaluasi")qEval();
+  else if(h==="main"){if(run&&!run.over)qShow("qplay");else location.replace("#quiz")}
+  else if(h==="hasil"){if(run&&run.over&&T("qrb").innerHTML)qShow("qres");else location.replace("#quiz")}
+  else{clearInterval(tm);menu();T("qz").hidden=true;T("app").hidden=true;T("home").hidden=false;window.scrollTo(0,0)}
+}
+window.addEventListener("hashchange",route);
+route();
 </script>
 </body>
 </html>
