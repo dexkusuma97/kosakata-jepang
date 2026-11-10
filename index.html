@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kosakata Jepang Urut Nomor</title>
+<title>Belajar Bahasa Jepang</title>
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--tx:#1b1e2b;--mu:#6b7090;--ac:#5b5bf0;--acx:#fff;--bd:#e3e5f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12141c;--card:#1c1f2b;--tx:#eceefa;--mu:#9a9fc0;--ac:#8484ff;--acx:#10121a;--bd:#2d3142}}
@@ -36,19 +36,91 @@ h2{font-size:13px;margin:18px 2px 8px;display:flex;justify-content:space-between
 .empty{color:var(--mu);text-align:center;padding:30px 0}
 .s{border:0;background:none;font-size:24px;line-height:1;color:var(--mu);padding:0;cursor:pointer}
 .s.on{color:#f5b301}
+
+[hidden]{display:none!important}
+.hd{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hd h1{margin:0;flex:1;font-size:18px}
+.hd button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:7px 10px;font-size:13px;font-weight:600}
+#cnt{font-size:13px;color:var(--mu);font-weight:600}
+.home{max-width:600px;margin:0 auto;padding:40px 16px}
+.home h1{font-size:26px;margin:0 0 6px}
+.sub{color:var(--mu);margin:0 0 22px;font-size:15px}
+.card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:18px;padding:18px;margin-bottom:12px;font-family:inherit}
+.card .em{font-size:32px}
+.card b{font-size:18px;display:block;margin-bottom:2px}
+.card small{color:var(--mu);font-size:13px}
+.card:active{border-color:var(--ac)}
+
+:root{--ok:#16a34a;--okb:#e7f8ee;--no:#dc2626;--nob:#fdecec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#4ade80;--okb:#12301f;--no:#f87171;--nob:#3a1818}}
+:root[data-theme="dark"]{--ok:#4ade80;--okb:#12301f;--no:#f87171;--nob:#3a1818}
+#qz{max-width:600px;margin:0 auto;padding:16px 14px 60px}
+#qz h2{margin:20px 2px 8px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button,.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;padding:12px 6px;font-size:14px;font-weight:600;font-family:inherit}
+.seg button.on,.chip.on{background:var(--ac);border-color:var(--ac);color:var(--acx)}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.go{width:100%;margin-top:22px;border:0;background:var(--ac);color:var(--acx);border-radius:14px;padding:15px;font-size:16px;font-weight:700;font-family:inherit}
+.go:disabled{opacity:.4}
+.ghost2{width:100%;margin-top:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:13px;font-size:14px;font-weight:600;font-family:inherit}
+.tm{display:flex;align-items:baseline;justify-content:space-between}
+.tn{font-size:44px;font-weight:800}
+.tn.low{color:var(--no)}
+.td{font-size:22px;font-weight:800;min-height:28px}
+.tb{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:4px 0 14px}
+.tb i{display:block;height:100%;background:var(--ac);width:100%}
+.qi{color:var(--mu);font-size:13px;margin-bottom:8px;text-align:center}
+.qq{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:26px 14px;text-align:center;margin-bottom:12px}
+.qq .big{font-size:34px;font-weight:800}
+.qq .big2{font-size:26px;font-weight:800}
+.qq small{display:block;color:var(--mu);font-size:14px;margin-top:4px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;padding:14px;margin-bottom:8px;font-size:16px;font-weight:600;font-family:inherit}
+.opt small{display:block;color:var(--mu);font-size:12px;font-weight:500}
+.opt.ok{border-color:var(--ok);background:var(--okb)}
+.opt.no{border-color:var(--no);background:var(--nob)}
+.er{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center}
+.er:first-child{border-top:0}
+.er b{font-size:17px}
+.er small{display:block;color:var(--mu);font-size:12px}
+.er .c{text-align:right;font-size:13px;color:var(--mu)}
+.er .c strong{color:var(--no);font-size:16px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.stat div{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;text-align:center;font-size:12px;color:var(--mu)}
+.stat b{display:block;font-size:20px;color:var(--tx)}
+.big3{font-size:46px;font-weight:800;text-align:center;margin:10px 0}
+.hist{color:var(--mu);font-size:13px;padding:4px 2px}
 </style>
 </head>
 <body>
+<section id="home" class="home">
+<h1>Hafalan Bahasa Jepang</h1>
+<p class="sub">Pilih yang mau dipelajari dulu.</p>
+<div id="menu"></div>
+</section>
+<div id="app" hidden>
 <div class="top"><div class="in">
-<h1>Kosakata Jepang <span id="cnt" style="font-size:13px;color:var(--mu);font-weight:600"></span></h1>
+<div class="hd"><button id="back">← Menu</button><h1 id="ttl"></h1><span id="cnt"></span></div>
 <div class="tabs" id="tabs"></div>
 <input id="q" placeholder="Cari kata atau nomor..." autocomplete="off">
 <div class="tools"><button id="shuf">🔀 Acak</button><button id="urut" hidden>Urut</button><button id="hidej">Tutup Jepang</button><button id="hide">Tutup arti</button></div>
 <div class="tools" id="fl" style="margin-top:6px"><button data-f="all" class="on">Semua</button><button data-f="yes">★ Belum hafal</button><button data-f="no">Sudah hafal</button></div>
 </div></div>
 <main id="out"></main>
+</div>
+<div id="qz" hidden>
+<section id="qsetup"><div class="hd"><button class="bk">← Menu</button><h1>Quiz</h1></div>
+<h2>Pilih quiz</h2><div class="seg" id="sq"><button data-v="kerja">Kata Kerja</button><button data-v="benda">Kata Benda</button><button data-v="sifat">Kata Sifat</button><button data-v="campur">Campuran</button></div>
+<h2>Tipe soal</h2><div class="seg" id="st"><button data-v="ja">Jepang → Arti</button><button data-v="aj">Arti → Jepang</button></div>
+<h2>Pilih nomor</h2><div class="chips" id="sc"></div>
+<p class="hist">Waktu awal 61 detik. Jawaban benar +3 detik, salah −4 detik. Kata Benda memakai daftar kosakata.</p>
+<button class="go" id="qgo">Mulai</button><button class="ghost2" id="qev">📊 Lihat evaluasi</button></section>
+<section id="qplay" hidden><div class="tm"><div class="tn" id="tn">61</div><div class="td" id="td"></div></div><div class="tb"><i id="tbar"></i></div><div class="qi" id="qi"></div><div class="qq" id="qq"></div><div id="qo"></div><button class="ghost2" id="qquit">Berhenti</button></section>
+<section id="qres" hidden><div class="hd"><button class="bk">← Menu</button><h1>Hasil</h1></div><div id="qrb"></div><button class="go" id="qagain">Main lagi</button><button class="ghost2" id="qset2">Ubah pengaturan</button><button class="ghost2" id="qev2">📊 Evaluasi</button></section>
+<section id="qeval" hidden><div class="hd"><button class="bk">← Menu</button><h1>Evaluasi</h1><button id="evq">Quiz</button></div><div class="stat" id="evs"></div><div class="tabs" id="evt"></div><h2 id="evh"></h2><div id="evl"></div><div id="evhist"></div><button class="ghost2" id="evreset">Hapus data evaluasi</button></section>
+</div>
 <script>
-const raw=`せかい|sekai|Dunia
+const T=id=>document.getElementById(id);
+const SETS=[["belum","Kosakata","📚",`せかい|sekai|Dunia
 アジア|ajia|Asia
 ヨーロッパ|yōroppa|Eropa
 アフリカ|afurika|Afrika
@@ -291,18 +363,233 @@ const raw=`せかい|sekai|Dunia
 マフラー|mafurā|Syal
 こうさてん|kōsaten|Perempatan
 しんごう|shingō|Lampu merah
-しゅみ|shumi|Hobi`;
-const L=raw.split("\n").map((l,i)=>{const[k,r,a]=l.split("|");return{n:i+1,k,r,a}});
-const B=[...Array(Math.ceil(L.length/25)).keys()].map(i=>[i*25+1,Math.min(i*25+25,L.length)]);
-const T=id=>document.getElementById(id);
-let sel=-1,hide=false,hidJ=false,pos=null,fl="all",done=new Set();
-try{done=new Set(JSON.parse(localStorage.getItem("belum")||"[]"))}catch(e){}
+しゅみ|shumi|Hobi`],["belum_kerja","Kata Kerja","🏃",`おきます|okimasu|Bangun
+ねます|nemasu|Tidur
+はたらきます|hatarakimasu|Bekerja
+やすみます|yasumimasu|Istirahat
+べんきょうします|benkyō shimasu|Belajar
+いきます|ikimasu|Pergi
+きます|kimasu|Datang
+かえります|kaerimasu|Pulang
+たべます|tabemasu|Makan
+のみます|nomimasu|Minum
+すいます|suimasu|Menghisap (rokok)
+よみます|yomimasu|Membaca
+みます|mimasu|Melihat
+ききます|kikimasu|Mendengar
+かきます|kakimasu|Menulis
+かいます|kaimasu|Membeli
+とります|torimasu|Memotret
+じっしゅうします|jisshū shimasu|Praktek
+ピンポンします|pinpon shimasu|Bermain pingpong
+はじめます|hajimemasu|Memulai
+おわります|owarimasu|Selesai
+かかります|kakarimasu|Memerlukan (waktu)
+きります|kirimasu|Memotong
+しゅうりします|shūri shimasu|Memperbaiki
+あげます|agemasu|Memberi
+もらいます|moraimasu|Menerima
+かします|kashimasu|Meminjamkan
+かります|karimasu|Meminjam
+おしえます|oshiemasu|Mengajarkan
+ならいます|naraimasu|Belajar
+おくります|okurimasu|Mengirim
+つきます|tsukimasu|Sampai/tiba
+かけます|kakemasu|Menelepon
+あいます|aimasu|Bertemu
+あります|arimasu|Ada/punya (benda mati)
+わかります|wakarimasu|Mengerti
+います|imasu|Ada (benda hidup)
+あります|arimasu|Ada (benda mati)
+います|imasu|Berada (benda hidup)
+せんたくします|sentaku shimasu|Mencuci pakaian
+そうじします|sōji shimasu|Membersihkan
+つくります|tsukurimasu|Membuat
+だします|dashimasu|Mengirim (surat)
+かえます|kaemasu|Menukar
+あそびます|asobimasu|Bermain
+さんぽします|sanpo shimasu|Jalan-jalan
+かいものします|kaimono shimasu|Berbelanja
+けんぶつします|kenbutsu shimasu|Melancong
+けんがくします|kengaku shimasu|Meninjau
+けっこんします|kekkon shimasu|Menikah
+はいります|hairimasu|Masuk
+でます|demasu|Keluar
+はなします|hanashimasu|Berbicara
+いいます|iimasu|Mengatakan
+まちます|machimasu|Menunggu
+いそぎます|isogimasu|Buru-buru
+よびます|yobimasu|Memanggil
+みせます|misemasu|Memperlihatkan
+おしえます|oshiemasu|Memberitahu
+おぼえます|oboemasu|Mengingat
+ふります|furimasu|Turun (hujan)
+とります|torimasu|Mengambil
+たちます|tachimasu|Berdiri
+すわります|suwarimasu|Duduk
+おきます|okimasu|Meletakkan
+もちます|mochimasu|Membawa
+つけます|tsukemasu|Menyalakan
+けします|keshimasu|Memadamkan
+あけます|akemasu|Membuka
+しめます|shimemasu|Menutup
+てつだいます|tetsudaimasu|Membantu
+つかいます|tsukaimasu|Menggunakan
+しります|shirimasu|Tahu/kenal
+すみます|sumimasu|Tinggal
+うります|urimasu|Menjual
+きます|kimasu|Memakai
+かえします|kaeshimasu|Mengembalikan
+はらいます|haraimasu|Membayar
+のります|norimasu|Naik
+おります|orimasu|Turun
+とまります|tomarimasu|Berhenti
+あるきます|arukimasu|Berjalan
+やくにたちます|yaku ni tachimasu|Bermanfaat
+いります|irimasu|Perlu
+こまります|komarimasu|Susah/bingung
+なくします|nakushimasu|Menghilangkan
+ぬぎます|nugimasu|Melepas
+さわります|sawarimasu|Menyentuh
+わらいます|waraimasu|Tertawa
+わすれます|wasuremasu|Lupa
+いれます|iremasu|Memasukkan
+だします|dashimasu|Mengeluarkan
+とめます|tomemasu|Menghentikan
+しんぱいします|shinpai shimasu|Khawatir
+きをつけます|ki o tsukemasu|Berhati-hati
+もっていきます|motte ikimasu|Membawa pergi
+もってきます|motte kimasu|Membawa datang
+なおります|naorimasu|Sembuh
+なおします|naoshimasu|Memperbaiki
+ひきます|hikimasu|Bermain (piano)
+うたいます|utaimasu|Menyanyi
+およぎます|oyogimasu|Berenang
+うんてんします|unten shimasu|Menyetir
+かります|karimasu|Meminjam
+あらいます|araimasu|Mencuci
+あびます|abimasu|Mandi
+でかけます|dekakemasu|Meninggalkan (rumah)
+ノックします|nokku shimasu|Mengetuk (pintu)
+こしょうします|koshō shimasu|Rusak
+ききます|kikimasu|Bertanya
+とまります|tomarimasu|Menginap
+やめます|yamemasu|Berhenti
+おもいます|omoimasu|Mengira
+わたります|watarimasu|Menyebrang
+まがります|magarimasu|Belok
+ちゅういします|chūi shimasu|Memperhatikan
+のりかえます|norikaemasu|Ganti kendaraan
+うまれます|umaremasu|Lahir
+しつもんします|shitsumon shimasu|Bertanya
+かきます|kakimasu|Menggambar
+くみたてます|kumitatemasu|Merakit
+ぶんかいします|bunkai shimasu|Membongkar
+せつめいします|setsumei shimasu|Menjelaskan
+しらべます|shirabemasu|Memeriksa
+かんがえます|kangaemasu|Berpikir
+うごきます|ugokimasu|Bergerak
+おします|oshimasu|Menekan/mendorong
+ひきます|hikimasu|Menarik
+つきます|tsukimasu|Menyala
+きえます|kiemasu|Padam
+みえます|miemasu|Kelihatan
+きこえます|kikoemasu|Kedengaran
+できます|dekimasu|Jadi/selesai
+ちょうせつします|chōsetsu shimasu|Menyetel/mengeset
+そうさします|sōsa shimasu|Mengoperasikan
+しょくじします|shokuji shimasu|Makan`],["belum_sifat","Kata Sifat","✨",`きれいな|kirei na|Cantik/bersih
+ハンサムな|hansamu na|Tampan
+しんせつな|shinsetsu na|Baik hati/ramah
+げんきな|genki na|Sehat
+ゆうめいな|yūmei na|Terkenal
+にぎやかな|nigiyaka na|Ramai
+しずかな|shizuka na|Tenang/sepi
+たのしい|tanoshii|Gembira
+おおきい|ōkii|Besar
+ちいさい|chiisai|Kecil
+あたらしい|atarashii|Baru
+ふるい|furui|Lama/usang
+いい|ii|Bagus
+わるい|warui|Jelek
+あつい|atsui|Panas (suhu)
+さむい|samui|Dingin (suhu)
+あつい|atsui|Panas (benda)
+つめたい|tsumetai|Dingin (benda)
+やさしい|yasashii|Mudah
+むずかしい|muzukashii|Sulit
+たかい|takai|Tinggi
+ひくい|hikui|Rendah
+たかい|takai|Mahal
+やすい|yasui|Murah
+おもしろい|omoshiroi|Menarik
+つまらない|tsumaranai|Membosankan
+おいしい|oishii|Enak
+まずい|mazui|Hambar/tidak enak
+しろい|shiroi|Putih
+くろい|kuroi|Hitam
+あかい|akai|Merah
+あおい|aoi|Biru
+すきな|suki na|Suka
+きらいな|kirai na|Benci
+じょうずな|jōzu na|Pandai
+へたな|heta na|Bodoh
+ちかい|chikai|Dekat
+とおい|tōi|Jauh
+はやい|hayai|Cepat
+おそい|osoi|Lambat
+おおい|ōi|Banyak
+すくない|sukunai|Sedikit
+あたたかい|atatakai|Hangat
+すずしい|suzushii|Sejuk
+ながい|nagai|Panjang
+みじかい|mijikai|Pendek
+おもい|omoi|Berat
+かるい|karui|Ringan
+あまい|amai|Manis
+からい|karai|Pedas
+ひまな|hima na|Senggang
+いそがしい|isogashii|Sibuk
+わかい|wakai|Muda
+としうえの|toshiue no|Tua
+たいせつな|taisetsu na|Penting
+ほしい|hoshii|Ingin
+あかるい|akarui|Terang
+くらい|kurai|Gelap
+ひろい|hiroi|Luas
+せまい|semai|Sempit
+べんりな|benri na|Praktis
+ふべんな|fuben na|Tidak praktis
+かんたんな|kantan na|Sederhana
+ふくざつな|fukuzatsu na|Rumit
+せがたかい|se ga takai|Tinggi (badan)
+せがひくい|se ga hikui|Pendek (badan)
+あぶない|abunai|Berbahaya
+うれしい|ureshii|Senang
+かなしい|kanashii|Sedih
+さびしい|sabishii|Kesepian
+ねむい|nemui|Mengantuk`]];
+let cur=0,L=[],B=[],sel=-1,hide=false,hidJ=false,pos=null,fl="all",done=new Set();
+const parse=s=>s.split("\n").map((l,j)=>{const[k,r,a]=l.split("|");return{n:j+1,k,r,a}});
+const saved=key=>{try{return new Set(JSON.parse(localStorage.getItem(key)||"[]"))}catch(e){return new Set()}};
 const cnt=()=>{T("cnt").textContent="★ "+done.size+" belum hafal"};
-T("tabs").innerHTML=`<button data-i="-1">Semua</button>`+B.map((b,i)=>`<button data-i="${i}">${b[0]}-${b[1]}</button>`).join("");
+function menu(){T("menu").innerHTML=SETS.map((s,i)=>`<button class="card" data-i="${i}"><span class="em">${s[2]}</span><span><b>${s[1]}</b><small>${parse(s[3]).length} kata · ★ ${saved(s[0]).size} belum hafal</small></span></button>`).join("")+`<button class="card" data-a="quiz"><span class="em">🎯</span><span><b>Quiz</b><small>Timer 61 detik · +3 benar, −4 salah</small></span></button><button class="card" data-a="eval"><span class="em">📊</span><span><b>Evaluasi</b><small>Kata yang sering salah</small></span></button>`}
+T("menu").onclick=e=>{const c=e.target.closest(".card");if(!c)return;if(c.dataset.a==="quiz")qSetup();else if(c.dataset.a==="eval")qEval();else openSet(+c.dataset.i)};
+function openSet(i){
+  cur=i;const s=SETS[i];L=parse(s[3]);
+  B=[...Array(Math.ceil(L.length/25)).keys()].map(j=>[j*25+1,Math.min(j*25+25,L.length)]);
+  sel=-1;pos=null;fl="all";done=saved(s[0]);T("q").value="";
+  T("shuf").classList.remove("on");T("shuf").textContent="🔀 Acak";T("urut").hidden=true;
+  T("ttl").textContent=s[1];
+  T("tabs").innerHTML=`<button data-i="-1">Semua</button>`+B.map((b,j)=>`<button data-i="${j}">${b[0]}-${b[1]}</button>`).join("");
+  T("home").hidden=true;T("app").hidden=false;window.scrollTo(0,0);render();
+}
+T("back").onclick=()=>{menu();T("app").hidden=true;T("home").hidden=false;window.scrollTo(0,0)};
 const row=w=>`<div class="r"><div class="n">${w.n}</div><div class="k">${w.k}<small>${w.r}</small></div><div class="a">${w.a}</div><button class="s${done.has(w.n)?" on":""}" data-n="${w.n}">${done.has(w.n)?"★":"☆"}</button></div>`;
 const box=a=>`<div class="box ${hide?"hid ":""}${hidJ?"hidj":""}">${a.map(row).join("")}</div>`;
 function render(){
-  const q=T("q").value.trim().toLowerCase();cnt();[...T("fl").children].forEach(b=>b.classList.toggle("on",b.dataset.f===fl));
+  const q=T("q").value.trim().toLowerCase();cnt();
+  [...T("fl").children].forEach(b=>b.classList.toggle("on",b.dataset.f===fl));
   [...T("tabs").children].forEach(b=>b.classList.toggle("on",+b.dataset.i===sel));
   let list=L.filter(w=>(sel<0||(w.n>=B[sel][0]&&w.n<=B[sel][1]))&&(!q||String(w.n)===q||(w.k+w.r+w.a).toLowerCase().includes(q))&&(fl==="all"||(fl==="yes")===done.has(w.n)));
   let h="";
@@ -312,13 +599,105 @@ function render(){
 }
 T("tabs").onclick=e=>{if(e.target.dataset.i!==undefined){sel=+e.target.dataset.i;render();window.scrollTo(0,0)}};
 T("q").oninput=render;
-T("out").onclick=e=>{const s=e.target.closest(".s");if(s){const n=+s.dataset.n;done.has(n)?done.delete(n):done.add(n);try{localStorage.setItem("belum",JSON.stringify([...done]))}catch(x){}if(fl==="all"){s.classList.toggle("on",done.has(n));s.textContent=done.has(n)?"★":"☆";cnt()}else render();return}const r=e.target.closest(".r");if(r)r.classList.toggle("show")};
 T("fl").onclick=e=>{if(e.target.dataset.f){fl=e.target.dataset.f;render()}};
+T("out").onclick=e=>{const s=e.target.closest(".s");if(s){const n=+s.dataset.n;done.has(n)?done.delete(n):done.add(n);try{localStorage.setItem(SETS[cur][0],JSON.stringify([...done]))}catch(x){}if(fl==="all"){s.classList.toggle("on",done.has(n));s.textContent=done.has(n)?"★":"☆";cnt()}else render();return}const r=e.target.closest(".r");if(r)r.classList.toggle("show")};
 T("shuf").onclick=()=>{const o=L.map(w=>w.n).sort(()=>Math.random()-.5);pos={};o.forEach((n,i)=>pos[n]=i);T("shuf").classList.add("on");T("shuf").textContent="🔀 Acak lagi";T("urut").hidden=false;render()};
 T("urut").onclick=()=>{pos=null;T("shuf").classList.remove("on");T("shuf").textContent="🔀 Acak";T("urut").hidden=true;render()};
 T("hidej").onclick=()=>{hidJ=!hidJ;T("hidej").classList.toggle("on",hidJ);T("hidej").textContent=hidJ?"Buka Jepang":"Tutup Jepang";render()};
 T("hide").onclick=()=>{hide=!hide;T("hide").classList.toggle("on",hide);T("hide").textContent=hide?"Buka arti":"Tutup arti";render()};
-render();
+
+const QZ={kerja:"Kata Kerja",benda:"Kata Benda",sifat:"Kata Sifat",campur:"Campuran"},QS={kerja:[1],benda:[0],sifat:[2],campur:[0,1,2]},SN=["Kata Benda","Kata Kerja","Kata Sifat"];
+const ALL=SETS.map(x=>parse(x[3]).map(w=>({...w,id:x[0]+":"+w.n,si:SETS.indexOf(x)})));
+const FLAT=ALL.flat(),BYID={};FLAT.forEach(w=>BYID[w.id]=w);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const lsGet=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const lab=(x,t)=>t==="ja"?x.a:x.k;
+let qc={quiz:"kerja",type:"ja",sel:new Set()},run=null,tm=null,ef="all",rs=false;
+const V=["qsetup","qplay","qres","qeval"];
+function qShow(id){T("home").hidden=true;T("app").hidden=true;T("qz").hidden=false;V.forEach(v=>T(v).hidden=v!==id);window.scrollTo(0,0)}
+function goHome(){clearInterval(tm);menu();T("qz").hidden=true;T("home").hidden=false;window.scrollTo(0,0)}
+const maxN=()=>Math.max(...QS[qc.quiz].map(i=>ALL[i].length));
+function qSetup(){qShow("qsetup");drawSetup()}
+function drawSetup(){
+  [...T("sq").children].forEach(b=>b.classList.toggle("on",b.dataset.v===qc.quiz));
+  [...T("st").children].forEach(b=>b.classList.toggle("on",b.dataset.v===qc.type));
+  const nb=Math.ceil(maxN()/25);
+  let h=`<button class="chip${qc.sel.size===nb?" on":""}" data-i="all">Semua</button>`;
+  for(let i=0;i<nb;i++)h+=`<button class="chip${qc.sel.has(i)?" on":""}" data-i="${i}">${i*25+1}-${Math.min(i*25+25,maxN())}</button>`;
+  T("sc").innerHTML=h;T("qgo").disabled=!qc.sel.size;
+}
+T("sq").onclick=e=>{const v=e.target.dataset.v;if(v){qc.quiz=v;qc.sel=new Set();drawSetup()}};
+T("st").onclick=e=>{const v=e.target.dataset.v;if(v){qc.type=v;drawSetup()}};
+T("sc").onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;const nb=Math.ceil(maxN()/25);if(i==="all")qc.sel=qc.sel.size===nb?new Set():new Set([...Array(nb).keys()]);else{const n=+i;qc.sel.has(n)?qc.sel.delete(n):qc.sel.add(n)}drawSetup()};
+T("qgo").onclick=start;T("qagain").onclick=start;
+T("qset2").onclick=qSetup;T("qev").onclick=qEval;T("qev2").onclick=qEval;T("evq").onclick=qSetup;
+T("qquit").onclick=()=>{clearInterval(tm);if(run)run.over=true;qSetup()};
+T("qz").onclick=e=>{if(e.target.closest(".bk"))goHome()};
+function start(){
+  const full=QS[qc.quiz].flatMap(i=>ALL[i]);
+  const pool=full.filter(w=>[...qc.sel].some(b=>w.n>b*25&&w.n<=b*25+25));
+  run={full,pool,order:[],q:null,last:null,right:0,wrong:0,wl:{},busy:false,paused:false,over:false,deadline:Date.now()+61000};
+  qShow("qplay");next();clearInterval(tm);tm=setInterval(tick,100);tick();
+}
+function tick(){
+  if(run.paused||run.over)return;
+  const left=run.deadline-Date.now();
+  if(left<=0)return finish();
+  T("tn").textContent=Math.ceil(left/1000);T("tn").classList.toggle("low",left<10000);
+  T("tbar").style.width=Math.min(100,left/610)+"%";
+}
+function mkQ(w){
+  const t=qc.type,bad=new Set(FLAT.filter(x=>t==="ja"?x.k===w.k:x.a===w.a).map(x=>lab(x,t)));
+  const opts=[w],seen=new Set([lab(w,t)]);
+  for(const x of shuffle([...run.pool,...run.full,...FLAT])){if(opts.length>=4)break;const l=lab(x,t);if(!seen.has(l)&&!bad.has(l)){seen.add(l);opts.push(x)}}
+  return{w,t,bad,opts:shuffle(opts)};
+}
+function next(){
+  if(!run.order.length)run.order=shuffle(run.pool);
+  let w=run.order.pop();
+  if(run.last&&w.id===run.last&&run.order.length){const x=run.order.pop();run.order.push(w);w=x}
+  run.last=w.id;run.q=mkQ(w);const q=run.q;
+  T("qi").textContent=`✓ ${run.right}   ✗ ${run.wrong}`;T("td").textContent="";
+  T("qq").innerHTML=q.t==="ja"?`<div class="big">${w.k}</div><small>${w.r}</small>`:`<div class="big2">${w.a}</div>`;
+  T("qo").innerHTML=q.opts.map((x,i)=>`<button class="opt" data-i="${i}">${q.t==="ja"?x.a:x.k+"<small>"+x.r+"</small>"}</button>`).join("");
+}
+T("qo").onclick=e=>{const b=e.target.closest(".opt");if(!b||run.busy||run.over)return;ans(+b.dataset.i)};
+function ans(i){
+  run.busy=true;const q=run.q,ok=q.bad.has(lab(q.opts[i],q.t)),btns=[...T("qo").children];
+  btns.forEach((b,j)=>{if(q.bad.has(lab(q.opts[j],q.t)))b.classList.add("ok");else if(j===i)b.classList.add("no")});
+  const st=lsGet("quiz_stats",{}),c=st[q.w.id]||[0,0];c[ok?0:1]++;st[q.w.id]=c;lsSet("quiz_stats",st);
+  if(ok)run.right++;else{run.wrong++;run.wl[q.w.id]=1}
+  run.deadline+=ok?3000:-4000;
+  T("td").textContent=ok?"+3":"−4";T("td").style.color=ok?"var(--ok)":"var(--no)";
+  T("qi").textContent=`✓ ${run.right}   ✗ ${run.wrong}`;
+  run.paused=true;const t0=Date.now();
+  setTimeout(()=>{if(run.over)return;run.deadline+=Date.now()-t0;run.paused=false;run.busy=false;if(run.deadline-Date.now()<=0)finish();else{tick();next()}},ok?450:1100);
+}
+function finish(){
+  if(run.over)return;run.over=true;clearInterval(tm);
+  const tot=run.right+run.wrong,acc=tot?Math.round(run.right/tot*100):0;
+  const h=lsGet("quiz_hist",[]);h.unshift({t:Date.now(),q:qc.quiz,y:qc.type,r:run.right,w:run.wrong});lsSet("quiz_hist",h.slice(0,30));
+  const wl=Object.keys(run.wl).map(id=>BYID[id]);
+  T("qrb").innerHTML=`<div class="big3">⏱ Waktu habis</div><div class="stat"><div><b>${run.right}</b>Benar</div><div><b>${run.wrong}</b>Salah</div><div><b>${acc}%</b>Akurasi</div></div>`+(wl.length?`<h2>Kata yang salah ronde ini</h2><div class="box">${wl.map(w=>`<div class="er"><div><b>${w.k}</b><small>${w.r}</small></div><div class="c">${w.a}</div></div>`).join("")}</div>`:`<p class="hist">Tidak ada jawaban salah. Keren!</p>`);
+  qShow("qres");
+}
+function qEval(){qShow("qeval");drawEval()}
+function drawEval(){
+  const st=lsGet("quiz_stats",{}),ids=Object.keys(st).filter(id=>BYID[id]);
+  let c=0,w=0;ids.forEach(id=>{c+=st[id][0];w+=st[id][1]});const tot=c+w;
+  T("evs").innerHTML=`<div><b>${tot}</b>Jawaban</div><div><b>${w}</b>Salah</div><div><b>${tot?Math.round(c/tot*100):0}%</b>Akurasi</div>`;
+  T("evt").innerHTML=[["all","Semua"],["0","Kata Benda"],["1","Kata Kerja"],["2","Kata Sifat"]].map(x=>`<button data-f="${x[0]}"${ef===x[0]?' class="on"':''}>${x[1]}</button>`).join("");
+  const l=ids.filter(id=>st[id][1]>0&&(ef==="all"||BYID[id].si===+ef)).sort((a,b)=>st[b][1]-st[a][1]||st[a][0]-st[b][0]);
+  T("evh").textContent=`Sering salah (${l.length} kata)`;
+  T("evl").innerHTML=l.length?`<div class="box">${l.map(id=>{const x=BYID[id];return`<div class="er"><div><b>${x.k}</b><small>${x.r} · ${x.a} · ${SN[x.si]} no. ${x.n}</small></div><div class="c"><strong>${st[id][1]}×</strong> salah<br>${st[id][0]}× benar</div></div>`}).join("")}</div>`:`<p class="hist">Belum ada data salah. Mainkan quiz dulu.</p>`;
+  const h=lsGet("quiz_hist",[]).slice(0,5);
+  T("evhist").innerHTML=h.length?`<h2>Riwayat terakhir</h2>`+h.map(x=>{const d=new Date(x.t);return`<div class="hist">${d.getDate()}/${d.getMonth()+1} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")} · ${QZ[x.q]} · ${x.y==="ja"?"Jepang→Arti":"Arti→Jepang"} · ✓${x.r} ✗${x.w}`+`</div>`}).join(""):"";
+}
+T("evt").onclick=e=>{if(e.target.dataset.f){ef=e.target.dataset.f;drawEval()}};
+T("evreset").onclick=e=>{if(!rs){rs=true;e.target.textContent="Ketuk lagi untuk menghapus semua data";setTimeout(()=>{rs=false;e.target.textContent="Hapus data evaluasi"},3000)}else{rs=false;lsSet("quiz_stats",{});lsSet("quiz_hist",[]);e.target.textContent="Hapus data evaluasi";drawEval()}};
+
+menu();
 </script>
 </body>
 </html>
